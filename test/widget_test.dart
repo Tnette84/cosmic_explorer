@@ -1,30 +1,24 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:cosmic_explorer/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Cosmic Explorer displays five planets', (tester) async {
     await tester.pumpWidget(const CosmicExplorerApp());
+    await tester.pumpAndSettle();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Mercury'), findsOneWidget);
+    expect(find.text('Mars'), findsOneWidget);
+    expect(find.text('Jupiter'), findsOneWidget);
+    expect(find.text('Kepler-186f'), findsOneWidget);
+    expect(find.text('Proxima Centauri b'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('Mission Control has navigation menu', (tester) async {
+    await tester.pumpWidget(const CosmicExplorerApp());
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byIcon(Icons.menu), findsOneWidget);
   });
 }
