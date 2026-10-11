@@ -16,3 +16,12 @@ In Phase 2, I created a Planet class to store each planet's name, type, and desc
 ListView.builder helps organize the planet list by building items as needed instead of creating every item at once. I also used Navigator.push() to pass the selected Planet object to the PlanetDetail screen.
 
 I tested all five planets and confirmed that their information displayed correctly. The Docking Bay navigation also worked.
+
+
+## Phase 3 – Observation Log
+
+In Phase 3, I added a Confirm Visit button to the PlanetDetail screen. I used Navigator.pop() to return a confirmation message to Mission Control.
+
+I also used async and await to receive the message after returning from the planet screen. The ScaffoldMessenger displays the confirmation using a SnackBar.
+
+This helped me understand how information can be passed back between screens. I tested the Confirm Visit button, and it worked correctly.

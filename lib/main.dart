@@ -73,6 +73,29 @@ class CosmicExplorerApp extends StatelessWidget {
 class MissionControl extends StatelessWidget {
   const MissionControl({super.key});
 
+  Future<void> openPlanet(
+    BuildContext context,
+    Planet planet,
+  ) async {
+    final String? result = await Navigator.push<String>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PlanetDetail(planet: planet),
+      ),
+    );
+
+    if (!context.mounted) return;
+
+    if (result != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(result),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +115,7 @@ class MissionControl extends StatelessWidget {
             subtitle: Text(planet.type),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PlanetDetail(planet: planet),
-                ),
-              );
+              openPlanet(context, planet);
             },
           );
         },
@@ -151,6 +169,16 @@ class PlanetDetail extends StatelessWidget {
             Text('Type: ${planet.type}'),
             const SizedBox(height: 15),
             Text(planet.description),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(
+                  context,
+                  'Visit confirmed: ${planet.name}',
+                );
+              },
+              child: const Text('Confirm Visit'),
+            ),
           ],
         ),
       ),
