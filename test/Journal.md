@@ -25,3 +25,12 @@ In Phase 3, I added a Confirm Visit button to the PlanetDetail screen. I used Na
 I also used async and await to receive the message after returning from the planet screen. The ScaffoldMessenger displays the confirmation using a SnackBar.
 
 This helped me understand how information can be passed back between screens. I tested the Confirm Visit button, and it worked correctly.
+
+
+## Phase 4 – GoRouter Navigation
+
+In Phase 4, I installed GoRouter and updated my app to use routes for navigation. I created routes for Mission Control, Docking Bay, and the planet detail screens. I also added a navigation drawer to make switching between screens easier.
+
+GoRouter is different from Navigator.push() because it uses defined paths to navigate between screens. This makes navigation more organized, especially as an app becomes larger.
+
+I tested the planet navigation, Confirm Visit button, and Docking Bay menu. Everything worked correctly in Microsoft Edge.
